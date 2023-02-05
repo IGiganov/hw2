@@ -80,24 +80,22 @@ Rails.logger.info "------------------------"
 
 # Generate models and tables, according to the domain model.
 # TODO!
-puts "studios: #{Studio.all.count}" 
-puts "movies: #{Movie.all.count}" 
-puts "actors: #{Actor.all.count}" 
-puts "roles: #{Role.all.count}" 
+#puts "studios: #{Studio.all.count}" 
+#puts "movies: #{Movie.all.count}" 
+#puts "actors: #{Actor.all.count}" 
+#puts "roles: #{Role.all.count}" 
 
 
 # Insert data into the database that reflects the sample data shown above.
 # Do not use hard-coded foreign key IDs.
 # TODO!
 
-#add studios
+#Insert studios
 new_studio = Studio.new
 new_studio["name"] = "Warner Bros."
 new_studio.save
 
-puts "studios: #{Studio.all.count}"
-
-#add movies
+#Insert movies
 new_studio = Studio.find_by({ "name" => "Warner Bros." })
 
 new_movie = Movie.new
@@ -121,10 +119,10 @@ new_movie["rated"] = "PG-13"
 new_movie["studio_id"] = new_studio["id"]
 new_movie.save
 
-puts "movies: #{Movie.all.count}"
+#puts "movies: #{Movie.all.count}"
 
 
-#Add roles and actors for Batman Begins
+#Insert actors and roles for Batman Begins
 new_actor = Actor.new
 new_actor["name"] = "Christian Bale"
 new_actor.save
@@ -188,7 +186,7 @@ new_role["character_name"] = "Commissioner Gordon"
 new_role.save
 
 
-#Add roles and actors for The Dark Knight
+#Insert actors and roles for The Dark Knight
 new_actor = Actor.new
 new_actor["name"] = "Heath Ledger"
 new_actor.save
@@ -244,7 +242,7 @@ new_role["character_name"] = "Rachel Dawes"
 new_role.save
 
 
-#Add roles and actors for The Dark Knight Rises
+#Insert actors and roles for The Dark Knight Rises
 new_actor = Actor.new
 new_actor["name"] = "Tom Hardy"
 new_actor.save
@@ -302,10 +300,6 @@ new_role["actor_id"] = new_actor["id"]
 new_role["character_name"] = "Selina Kyle"
 new_role.save
 
-puts "actors: #{Actor.all.count}"
-puts "roles: #{Role.all.count}"
-
-
 
 # Prints a header for the movies output
 puts "Movies"
@@ -340,7 +334,6 @@ puts ""
 roles = Role.all
 
 for role in roles
-    
     movie_id = role["movie_id"]
     actor_id = role["actor_id"]
     character_name = role["character_name"]
